@@ -72,7 +72,7 @@ def getDeceased():
 
 def getPlayerIdsByName(name, current=False):
     params = {'name': name, 'current': current}
-    return glet('/playerIdsByName', params)
+    return [p['player_id'] for p in glet('/playerIdsByName', params)]
 
 def getPlayerInfo(**params):
     '''OPTIONS
