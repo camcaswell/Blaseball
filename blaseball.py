@@ -30,13 +30,8 @@ def glet(endpoint, params={}):
     return requests.get(BASE + endpoint, params).json()
 
 # RAW DATA
-def getEverything(seasons=None):
-    if seasons is None:
-        seasons = range(11)
-    if type(seasons) in (str, int):
-        return glet('/data/events', {season: seasons})
-    else:
-        return {str(season): glet('/data/events', {"season": season}) for season in seasons}
+def getSeasonEvents(season):
+   return glet('/data/events', {"season": season})
 
 
 
