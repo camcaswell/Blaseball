@@ -128,8 +128,8 @@ def getSeasonLeaders(**params):
 
 def getPlayerStats(**params):
     '''OPTIONS
-    category: either 'batting' or 'pitching'
-    season: (optional) season to get stats for
-    playerIds: comma-separated list of player IDs
+    category:   (required) 'batting', 'pitching', 'running', or 'fielding'
+    season:     (optional) season to get stats for
+    playerIds:  (required) comma-separated list of player IDs
     '''
     return glet('/playerStats', params)
