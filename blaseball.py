@@ -38,6 +38,8 @@ def getEverything(seasons=None):
     else:
         return {str(season): glet('/data/events', {"season": season}) for season in seasons}
 
+
+
 #GAME EVENTS
 def getEvents(**params):
     '''OPTIONS
@@ -61,6 +63,8 @@ def getCount(eventType, **kwargs):
     params = {'eventType': eventType}
     params.update(kwargs)
     return glet('/countByType', params)
+
+
 
 #PLAYERS
 def getDeceased():
@@ -93,6 +97,8 @@ def getPlayersForGameday(**params):
     '''
     return glet('/allPlayersForGameday', params)
 
+
+
 #TEAMS
 def getRoster(**params):
     '''OPTIONS
@@ -107,8 +113,10 @@ def getTeams():
 def getTeamStars():
     return glet('/allTeamStars')
 
+
+
 #STATISTICS V2
-def seasonLeaders(**params):
+def getseasonLeaders(**params):
     '''OPTIONS
     season: Season to query (zero-indexed)
     category: Stat category (batting, pitching, running, or fielding)
@@ -118,7 +126,7 @@ def seasonLeaders(**params):
     '''
     return glet('/seasonLeaders', params)
 
-def playerStats(**params):
+def getplayerStats(**params):
     '''OPTIONS
     category: either 'batting' or 'pitching'
     season: (optional) season to get stats for
