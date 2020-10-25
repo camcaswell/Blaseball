@@ -40,9 +40,24 @@ def getEverything(seasons=None):
 
 #GAME EVENTS
 def getEvents(**params):
+    '''OPTIONS
+    playerId: The ID of a player that must be the batter or the pitcher in each event.
+    gameId: The ID of the game by which to filter results.
+    pitcherId: The ID of the pitcher that must be in each event.
+    batterId: The ID of the batter that must be in each event.
+    type: The type of event by which to filter.
+    outcomes: Include child player event records. (Boolean)
+    baseRunners: Include child base runner records. (Boolean)
+    sortBy: The field by which to sort. Most text and numeric columns are supported.
+    sortDirection: The direction by which to sort. Must be one of ASC, DESC.
+    '''
     return glet('/events', params)
 
 def getCount(eventType, **kwargs):
+    '''OPTIONS
+    batterId: The ID of the batter(s) by which to filter.
+    pitcherId: The ID of the pitcher(s) by which to filter.
+    '''
     params = {'eventType': eventType}
     params.update(kwargs)
     return glet('/countByType', params)
@@ -56,6 +71,12 @@ def getPlayerIdsByName(name, current=False):
     return glet('/playerIdsByName', params)
 
 def getPlayerInfo(**params):
+    '''OPTIONS
+    playerId: The player ID of the player (takes precedence if other params are specified)
+    name: The name of the player (takes precedence if slug is specified)
+    slug: The url_slug of the player
+    all: (default:false) If true, all historical info for the player will be returned, rather than just the current info
+    '''
     return glet('/playerInfo', params)
 
 def getTaggedPlayers():
@@ -66,10 +87,18 @@ def getPlayers(shadows=False):
     return glet('/allPlayers', params)
 
 def getPlayersForGameday(**params):
+    '''OPTIONS
+    season: Season to query (zero-indexed)
+    day: Day to query (zero-indexed)
+    '''
     return glet('/allPlayersForGameday', params)
 
 #TEAMS
 def getRoster(**params):
+    '''OPTIONS
+    teamId: The ID of the team (takes precedence if slug is given)
+    slug: The URL slug of the team
+    '''
     return glet('/currentRoster', params)
 
 def getTeams():
@@ -80,13 +109,19 @@ def getTeamStars():
 
 #STATISTICS V2
 def seasonLeaders(**params):
+    '''OPTIONS
+    season: Season to query (zero-indexed)
+    category: Stat category (batting, pitching, running, or fielding)
+    stat: Stat to get the leaders for (as returned from /playerStats)
+    order: Ordering to use for ranking (ASC or DESC)
+    limit: Number of leaders to return
+    '''
     return glet('/seasonLeaders', params)
 
 def playerStats(**params):
+    '''OPTIONS
+    category: either 'batting' or 'pitching'
+    season: (optional) season to get stats for
+    playerIds: comma-separated list of player IDs
+    '''
     return glet('/playerStats', params)
-
-
-
-with open('response.json', 'w') as rf:
-    resp = getPlayerInfo(name="PolkaDot Patterson")
-    json.dump(resp, rf)
