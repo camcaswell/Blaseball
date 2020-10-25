@@ -5,6 +5,9 @@
 #JSON
 *.json
 
+#Python
+test.py
+
 
 
 # Byte-compiled / optimized / DLL files
