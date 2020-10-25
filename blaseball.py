@@ -116,7 +116,7 @@ def getTeamStars():
 
 
 #STATISTICS V2
-def getseasonLeaders(**params):
+def getSeasonLeaders(**params):
     '''OPTIONS
     season: Season to query (zero-indexed)
     category: Stat category (batting, pitching, running, or fielding)
@@ -126,7 +126,7 @@ def getseasonLeaders(**params):
     '''
     return glet('/seasonLeaders', params)
 
-def getplayerStats(**params):
+def getPlayerStats(**params):
     '''OPTIONS
     category: either 'batting' or 'pitching'
     season: (optional) season to get stats for
